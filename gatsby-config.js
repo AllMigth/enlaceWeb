@@ -17,7 +17,7 @@ module.exports = {
       options:{
         objects: ["Sku","Product"],
         secretKey: process.env.STRIPE_SECRET_KEY,
-        downloadFile: true
+        downloadFiles: true
       }
     }
   ],
