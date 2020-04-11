@@ -1,5 +1,10 @@
 const slugify = require('slugify');
 
+const slugifyOptions = {
+    replacement: '-',
+    lower: true
+}
+
 exports.sourceNodes = ({ actions }) => {
     actions.createTypes(`
         type StripeProduct implements Node{
@@ -23,7 +28,8 @@ exports.createResolvers = ({ createResolvers }) => {
     createResolvers({
         StripeProduct: {
             slug: {
-                resolve:(source) => source.id
+                resolve:(source) => slugify(source.name, slugifyOptions)
+                //ahora retorna el nombre del producto
             }
         }
     })
@@ -32,4 +38,35 @@ exports.createResolvers = ({ createResolvers }) => {
 quiero generar un slug a partir de su nombre
 entonces instalo una dependencia llamada npm install slugify 
 crear un slug en base a un string
+
+AQUI EN GATSBY NODE vamos a crear las paginas con el export
+para cada uno de los productos, para eso tambien hay un hook
+createPages = permite crear paginas de manera dinamica
 */
+
+    exports.createPages = async({ actions, graphql }) => {
+        //recibo actions y graphql
+        const products = (await graphql(`
+        {
+            allStripeProduct {
+            nodes {
+                slug
+                id
+                name
+            }
+            }
+        }
+        `)).data.allStripeProduct.nodes;
+
+        //ahora voy a iterara cada uno de los productos
+        products.forEach( ( product ) => {
+            //CREANDO PAGINAS DINAMICAS
+            actions.createPage({
+                path: `products/${product.slug}`,
+                component: require.resolve("./src/templates/product.jsx"),
+                context: {
+                    id: product.id
+                }            
+            })
+        })
+    }
