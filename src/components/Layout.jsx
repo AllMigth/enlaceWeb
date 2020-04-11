@@ -8,7 +8,7 @@ export default (props) => {
         <Fragment>
             <SEO />            
             <Nav />
-            <main> {props.children} </main>
+            <main className="max-w-4xl mx-auto"> {props.children} </main>
         </Fragment>
     )
 }

@@ -1,23 +1,24 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import Products from '../components/Products';
+import { graphql } from 'gatsby';
 
+//componentes para exponer los datos
 export default (props) => {
-    console.log(props);
+    const products = props.data.allStripeProduct.nodes;
     return(
         <Layout>
-            {
-                props.data.allStripeProduct.nodes.map((product)=>(
-                    <li>{product.name}</li>
-                ))
-            }
+            <Products products={products} />
         </Layout>
     )
 };
 
+//componentes para extraer la consulta
 export const pageQuery = graphql`
 {
 	allStripeProduct {
     nodes {
+        id
       name
     }
 	}

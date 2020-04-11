@@ -21,7 +21,8 @@
     "gatsby-source-stripe": "^3.0.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.0.0",
+    "slugify": "^1.4.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1",

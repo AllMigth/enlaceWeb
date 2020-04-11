@@ -16,13 +16,13 @@ const navItems = [
 
 export default (props) => {
     return (
-        <header className=' bg-yellow-700 text-white shadow-md'> 
+        <header className=' bg-blue-900 text-white shadow-md'> 
             <nav> 
                 <ul className='flex'>
                 {
                     navItems.map((item, index)=> 
                         (<li key={index}> 
-                            <Link className='hover:bg-yellow-600  px-6 inline-block py-4' to={item.href}>{item.caption}</Link>
+                            <Link className='hover:bg-purple-700  px-6 inline-block py-4' to={item.href}>{item.caption}</Link>
                         </li>
                      ))
                 }   
