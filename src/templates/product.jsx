@@ -1,9 +1,35 @@
 import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
+import Product from '../components/Product'
 
 export default (props) => {
-    return(
-        <div>
-            <h1>Hola mundo desde la pagina product.jsx</h1>
-        </div>
-    )
+	console.log(props);
+	const product = props.data.stripeProduct;
+	const skus = props.data.allStripeSku.nodes;
+	return(
+		<Layout>
+			<Product skus={skus} product = {product}> </Product>
+		</Layout>
+	)
 }
+
+export const pageQuery = graphql `
+	query($id : String) {
+			stripeProduct(id: { eq: $id }){
+					name
+					slug
+        }
+        allStripeSku(filter: {product: {id: {eq: $id}}}) {
+					nodes {
+						image
+						attributes {
+							name
+						}
+						price
+						currency
+						created
+				}
+			}
+	}
+`;
