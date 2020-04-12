@@ -23,6 +23,7 @@ export const pageQuery = graphql `
         allStripeSku(filter: {product: {id: {eq: $id}}}) {
 					nodes {
 						image
+						id
 						attributes {
 							name
 						}
