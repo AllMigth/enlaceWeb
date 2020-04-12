@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import cardSuccess from '../images/a.svg';
 
 export default (props) => {
