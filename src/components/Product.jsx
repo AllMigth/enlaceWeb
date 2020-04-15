@@ -1,6 +1,6 @@
 import React from 'react';
 import Price from './Price';
-import CheckoutTemp from './CheckoutTemp';
+import AddToCartConnected from './AddToCartConnected';
 
 export default ({ product, skus }) => {
     const  sku = skus[0];
@@ -11,7 +11,7 @@ export default ({ product, skus }) => {
                    <div className="flex-1">
                        {
                            (sku && sku.image) &&
-                           <img src={skus[0].image} />
+                           <img src={skus[0].image} alt="Imagen del producto" />
                        }
                    </div>
                    <div className="flex-1 px-6">
@@ -22,7 +22,7 @@ export default ({ product, skus }) => {
             </header>
             <div className="text-center p-6">
                     <h1 className="text-3xl uppercase mb-4"> {product.name} </h1>
-                    <CheckoutTemp sku={sku}/>
+                    <AddToCartConnected sku={sku}/>
             </div>
         </article>
     )

@@ -24,3 +24,4 @@ allStripeProduct {
 }
 }
 `;
+/*PAGINA PARA MOSTRAR TODOS LOS PRODUCTOS */

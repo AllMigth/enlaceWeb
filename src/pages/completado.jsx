@@ -9,3 +9,7 @@ export default (props) => {
         </Layout>
     )
 }
+
+/*
+PAGINA DE MUESTRA DESPUES DE HACER LA COMPRA
+*/
